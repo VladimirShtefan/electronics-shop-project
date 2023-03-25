@@ -47,7 +47,6 @@ class Item:
             for row in reader:
                 cls.all.append((row['name'], float(row['price']), int(row['quantity'])))
 
-
     @staticmethod
     def string_to_number(number: str) -> int:
         """Преобразование строки в число."""
@@ -66,3 +65,8 @@ class Item:
         Применяет установленную скидку для конкретного товара.
         """
         self.price *= self.pay_rate
+
+    def __add__(self, other: 'Item') -> int:
+        if not isinstance(other, Item):
+            raise TypeError('Нельзя складывать разные классы')
+        return self.quantity + other.quantity
