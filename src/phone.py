@@ -19,4 +19,3 @@ class Phone(Item):
     def __repr__(self):
         data = super().__repr__()
         return data.replace(')', f', {self.number_of_sim})')
-
